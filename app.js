@@ -8,6 +8,7 @@ const boxes = document.querySelectorAll(".box");
 let hexGenerated = false;
 
 // randome hex color code generator
+
 function generate() {
     const possibleUnits = "ABCDEF1234567890";
     let value = "#";
@@ -19,6 +20,8 @@ function generate() {
 
     return value;
 }
+
+// change color code in whiteboard
 
 const changeColorCode = () => {
     whiteboard.removeChild(whiteboard.firstElementChild);
@@ -43,6 +46,8 @@ const changeColorCode = () => {
 
     hexGenerated = true;
 };
+
+// copy color code from whiteboard
 
 const copyColorCode = (colorCode) => {
     if (hexGenerated) {
@@ -86,7 +91,7 @@ boxes.forEach((box) => {
             navigator.clipboard.readText().then((code) => {
                 if (code.match(/^#[a-fA-F0-9]{6}$/)) {
                     boxCode.innerText = code;
-                } else if (text.match(/^[a-fA-F0-9]{6}$/)) {
+                } else if (code.match(/^[a-fA-F0-9]{6}$/)) {
                     boxCode.innerText = "#" + code;
                 }
                 box.style.backgroundColor = boxCode.innerText;
